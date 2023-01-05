@@ -1,0 +1,9 @@
+$menuBg: rgb(53, 70, 93);
+$menuTextColor: rgb(191, 203, 217);
+$menuActiveColor: rgb(114, 151, 231);
+
+:export {
+  menuBg: $menuBg;
+  menuTextColor: $menuTextColor;
+  menuActiveColor: $menuActiveColor;
+}

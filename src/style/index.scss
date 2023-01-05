@@ -1,0 +1,45 @@
+@import './sidebar.scss';
+@import './variables.module.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.l-container {
+  min-height: calc(100vh - 84px);
+}
+
+.l-navbar {
+  border-top: 1px solid rbga(94, 94, 94, 0.1);
+}
+
+.layout {
+  display: flex;
+}
+
+.l-content {
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.router-link-active {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:active {
+  color: $menuActiveColor;
+}
+
+li {
+  list-style: none;
+}

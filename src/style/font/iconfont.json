@@ -1,0 +1,86 @@
+{
+  "id": "3723490",
+  "name": "vue-admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1418232",
+      "name": "文章",
+      "font_class": "wenzhang",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1876336",
+      "name": "管理文章",
+      "font_class": "guanliwenzhang",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "6560993",
+      "name": "我的文章",
+      "font_class": "wodewenzhang",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "15053941",
+      "name": "文件",
+      "font_class": "ic_folder24px",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "128041",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "18538419",
+      "name": "用户设置",
+      "font_class": "yonghushezhi",
+      "unicode": "ef98",
+      "unicode_decimal": 61336
+    },
+    {
+      "icon_id": "23659079",
+      "name": "劳动合同",
+      "font_class": "laodonghetong",
+      "unicode": "f8e6",
+      "unicode_decimal": 63718
+    },
+    {
+      "icon_id": "6239139",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "13641000",
+      "name": "signin_password1",
+      "font_class": "signin_password",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "8106245",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "24328517",
+      "name": "nav-collapse",
+      "font_class": "nav-collapse",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    }
+  ]
+}
