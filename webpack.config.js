@@ -1,12 +1,16 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const HTMLWebapckPlugin = require("html-webpack-plugin");
-const SpeedMeasureWebpackPlugin = require("speed-measure-webpack-plugin");
 const AutoImport = require("unplugin-auto-import/webpack");
 const Components = require("unplugin-vue-components/webpack");
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 const globalVar = require("./injectGlobalVar.js");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const SpeedMeasureWebpackPlugin = require("speed-measure-webpack-plugin");
+const WebpackBundleAnalyzer =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const title = "白浅后台";
 
@@ -31,9 +35,21 @@ module.exports = {
       },
       {
         test: /\.(j|t)s$/,
-        use: {
-          loader: "babel-loader",
-        },
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+            },
+          },
+          // {
+          //   loader: "thread-loader",
+          //   options: {
+          //     works: 2,
+          //   },
+          // },
+        ],
       },
       {
         test: /\.mjs$/,
@@ -46,41 +62,50 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
+          process.env.NODE_ENV === "production"
+            ? MiniCssExtractPlugin.loader
+            : "style-loader",
           "css-loader",
           {
             loader: "sass-loader",
             options: {
-              // additionalData: `
-              //   @import "src/style/variables.scss";
-              // `,
               sassOptions: {
                 includePaths: [__dirname],
               },
             },
           },
-          "postcss-loader",
         ],
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(jpg|png)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 10 * 1024,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10 * 1024,
+            },
           },
-        },
+          // {
+          //   loader: "image-webpack-loader",
+          //   options: {
+          //     mozjpeg: {
+          //       quality: 80,
+          //     },
+          //   },
+          // },
+        ],
       },
       {
         test: /\.(ttf|woff|woff2)$/,
         type: "asset/resource",
       },
     ],
+    noParse: /vue\.runtime\.ems-bundler\.js$/,
   },
   resolve: {
     alias: {
@@ -89,7 +114,6 @@ module.exports = {
     extensions: [".js", ".ts", ".vue"],
   },
   plugins: [
-    // new SpeedMeasureWebpackPlugin(),
     new VueLoaderPlugin(),
     new HTMLWebapckPlugin({
       template: "./public/index.html",
@@ -100,13 +124,35 @@ module.exports = {
       __VUE_OPTIONS_API__: false,
       __VUE_PROD_DEVTOOLS__: false,
     }),
-
-    // element-plus 自动导入
+    new MiniCssExtractPlugin(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],
     }),
+    new SpeedMeasureWebpackPlugin(),
+    new WebpackBundleAnalyzer(),
   ],
+
+  // optimization: {
+  //   runtimeChunk: "single",
+  //   splitChunks: {
+  //     chunks: "all",
+  //     maxInitialRequests: Infinity,
+  //     minSize: 0,
+  //     cacheGroups: {
+  //       vendor: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name(module) {
+  //           const packageName = module.context.match(
+  //             /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+  //           )[1];
+
+  //           return `npm.${packageName.replace("@", "")}`;
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
 };

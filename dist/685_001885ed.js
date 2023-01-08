@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkadmin=self.webpackChunkadmin||[]).push([[685],{5685:(n,e,u)=>{u.r(e),u.d(e,{default:()=>t});var d=u(7690);const r={},t=(0,u(7818).Z)(r,[["render",function(n,e){return(0,d.wg)(),(0,d.iD)("div",null," 404 not found ")}]])}}]);

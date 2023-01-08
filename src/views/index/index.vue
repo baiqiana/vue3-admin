@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img class="index-img" src="@/assets/index.jpg" alt="">
+        <img class="index-img" src="https://bqbljog.oss-cn-hongkong.aliyuncs.com/image/.1673253931808background.jpg" alt="">
     </div>
 </template>
 
